@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principles of Optical Fibers - OptiFiber</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 0;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            margin-left: 0.5rem;
+        }
+        
+        .menu-items {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-items li {
+            margin-left: 1.5rem;
+        }
+        
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-items a:hover {
+            color: var(--accent-color);
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .content-nav {
+            background-color: var(--light-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .content-nav-items {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        
+        .content-nav-items li {
+            margin-right: 1.5rem;
+            white-space: nowrap;
+        }
+        
+        .content-nav-items a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .content-nav-items a:hover {
+            color: var(--accent-color);
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 3rem;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .article {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+        
+        .article section {
+            margin-bottom: 3rem;
+        }
+        
+        .article h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-bg);
+        }
+        
+        .article h3 {
+            margin: 1.5rem 0 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .article p {
+            margin-bottom: 1rem;
+        }
+        
+        .article ul, .article ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .img-container {
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .img-container img {
+            width: 100%;
+            display: block;
+        }
+        
+        .caption {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .sidebar-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-box h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-bg);
+        }
+        
+        .sidebar-box ul {
+            list-style: none;
+        }
+        
+        .sidebar-box ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-box ul a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .sidebar-box ul a:hover {
+            color: var(--primary-color);
+        }
+        
+        .info-card {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .interactive-demo {
+            background-color: var(--light-bg);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .demo-container h2 {
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .interactive-animation {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .controls button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .controls button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col ul a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span>OptiFiber</span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="principles.html">Principles</a></li>
+                <li><a href="applications.html">Applications</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="casestudy.html">Case Study's</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Principles of Optical Fibers</h1>
+        <p>Understanding the science that powers global communications and modern technology</p>
+    </div>
+
+    <div class="content-nav">
+        <div class="content-nav-container">
+            <ul class="content-nav-items">
+                <li><a href="#what-are-optical-fibers">What Are Optical Fibers?</a></li>
+                <li><a href="#structure-composition">Structure & Composition</a></li>
+                <li><a href="#total-internal-reflection">Total Internal Reflection</a></li>
+                <li><a href="#types-of-fibers">Types of Fibers</a></li>
+                <li><a href="#light-transmission">Light Transmission</a></li>
+                <li><a href="#manufacturing">Manufacturing Process</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="article">
+            <section id="what-are-optical-fibers">
+                <h2>What Are Optical Fibers?</h2>
+                <p>Optical fibers are thin, flexible, transparent strands of glass or plastic that act as waveguides, transmitting light between the two ends of the fiber. They function as a conduit for carrying information in the form of light pulses, revolutionizing the way we communicate and process data.</p>
+                
+                <div class="img-container">
+                    <img src="22.jpg" alt="Optical fiber compared to human hair">
+                    <div class="caption">Optical fibers are extremely thin, often comparable in diameter to a human hair, yet capable of transmitting vast amounts of data.</div>
+                </div>
+                
+                <p>The invention of optical fibers in the 1950s and their subsequent development has led to one of the most significant technological advances of the 20th century. Today, these remarkable glass strands form the backbone of the internet, enabling high-speed data transmission across continents and under oceans.</p>
+                
+                <div class="info-card">
+                    <h4>Did You Know?</h4>
+                    <p>A single optical fiber can carry over 90,000 TV channels or 3 million phone calls simultaneously. Modern fiber optic cables bundle hundreds of these individual fibers together, creating information superhighways.</p>
+                </div>
+            </section>
+
+            <section id="structure-composition">
+                <h2>Structure and Composition</h2>
+                <p>Optical fibers consist of several key components that work together to guide light efficiently:</p>
+                
+                <h3>Core</h3>
+                <p>The core is the central part of the fiber where light travels. It's typically made of pure silica glass (SiO<sub>2</sub>) with dopants such as germanium dioxide or phosphorus pentoxide to slightly increase its refractive index. The core diameter ranges from 8-10μm for single-mode fibers to 50-62.5μm for multimode fibers.</p>
+                
+                <h3>Cladding</h3>
+                <p>Surrounding the core is the cladding, also made of silica glass but with a lower refractive index than the core. This difference in refractive indices is crucial as it creates the conditions necessary for total internal reflection. The cladding is typically 125μm in diameter.</p>
+                
+                <h3>Buffer Coating</h3>
+                <p>The buffer coating is a plastic layer that protects the fiber from physical damage and moisture. It's typically made of materials like acrylate polymers.</p>
+                
+                <h3>Jacket</h3>
+                <p>The outermost layer is the jacket, made of PVC or similar materials, which provides additional mechanical protection and often color-coding for identification.</p>
+                
+                <div class="img-container">
+                    <img src="opc.jpg" alt="Cross-section of an optical fiber showing core, cladding, buffer, and jacket">
+                    <div class="caption">Cross-section of an optical fiber showing the layered structure: core, cladding, buffer coating, and outer jacket.</div>
+                </div>
+            </section>
+<section id="total-internal-reflection">
+        <h2>Total Internal Reflection</h2>
+        <p>The operating principle of optical fibers is based on a phenomenon called total internal reflection (TIR). This occurs when light traveling from a medium with a higher refractive index to one with a lower refractive index hits the boundary at an angle greater than the critical angle.</p>
+        
+        <div class="img-container">
+            <img src="ipl.jpg" alt="Total internal reflection in optical fiber">
+            <div class="caption">Total internal reflection causes light to bounce along the core of an optical fiber without escaping through the cladding.</div>
+        </div>
+        
+        <h3>The Critical Angle</h3>
+        <p>The critical angle is determined by the refractive indices of the core and cladding materials. It can be calculated using Snell's Law:</p>
+        <p>θ<sub>c</sub> = sin<sup>-1</sup>(n<sub>2</sub>/n<sub>1</sub>)</p>
+        <p>Where n<sub>1</sub> is the refractive index of the core and n<sub>2</sub> is the refractive index of the cladding.</p>
+        
+        <h3>How Light Travels in Fibers</h3>
+        <p>When light enters the fiber at an appropriate angle, it strikes the core-cladding boundary at an angle greater than the critical angle. Instead of passing through to the cladding, the light completely reflects back into the core. This process repeats thousands of times as the light zigzags down the length of the fiber, effectively trapped within the core.</p>
+        
+        <div class="info-card">
+            <h4>Physics in Action</h4>
+            <p>In typical optical fibers, the difference in refractive index between core and cladding is very small—often less than 1%. This small difference is enough to confine light within the core while allowing for optimal transmission characteristics.</p>
+        </div>
+    </section>
+
+    <section id="types-of-fibers">
+        <h2>Types of Optical Fibers</h2>
+        <p>Optical fibers come in several varieties, each designed for specific applications and performance characteristics:</p>
+        
+        <h3>Single-Mode Fibers</h3>
+        <p>Single-mode fibers have a very thin core (8-10μm) that allows only one mode or path of light to propagate. This eliminates intermodal dispersion and results in:</p>
+        <ul>
+            <li>Higher bandwidth capacity</li>
+            <li>Lower signal attenuation</li>
+            <li>Longer transmission distances (up to 100km without amplification)</li>
+            <li>Typically used in telecommunications and long-distance data transmission</li>
+        </ul>
+        
+        <h3>Multimode Fibers</h3>
+        <p>Multimode fibers have a larger core (50-62.5μm) that allows multiple modes of light to travel simultaneously. This results in:</p>
+        <ul>
+            <li>Lower manufacturing costs</li>
+            <li>Easier coupling with light sources</li>
+            <li>Shorter transmission distances (up to 2km)</li>
+            <li>Typically used in local area networks and short-distance applications</li>
+        </ul>
+        
+        <h3>Step-Index vs. Graded-Index</h3>
+        <p>Fibers are further classified based on how the refractive index changes between core and cladding:</p>
+        
+        <div class="img-container">
+            <img src="isl.jpg" alt="Step-index vs graded-index fiber structure">
+            <div class="caption">Comparison of step-index (left) and graded-index (right) optical fiber structures and light paths.</div>
+        </div>
+        
+        <h4>Step-Index Fibers</h4>
+        <p>In step-index fibers, there is an abrupt change in refractive index at the core-cladding boundary. Light rays follow a zigzag path of total internal reflection.</p>
+        
+        <h4>Graded-Index Fibers</h4>
+        <p>In graded-index fibers, the refractive index gradually decreases from the center of the core to the cladding. This causes light to follow a curved path, reducing modal dispersion and allowing for better performance in multimode applications.</p>
+    </section>
+
+    <section id="light-transmission">
+        <h2>Light Transmission and Signal Loss</h2>
+        <p>Despite being an extremely efficient transmission medium, optical fibers do experience some signal loss or attenuation over distance. Understanding these losses is crucial for designing effective fiber optic systems.</p>
+        
+        <h3>Sources of Signal Loss</h3>
+        <ul>
+            <li><strong>Absorption:</strong> Materials in the fiber absorb light energy and convert it to heat. This occurs due to impurities in the glass and intrinsic material properties.</li>
+            <li><strong>Scattering:</strong> Rayleigh scattering occurs when light interacts with microscopic variations in the fiber material, causing light to scatter in multiple directions.</li>
+            <li><strong>Bending Losses:</strong> When a fiber is bent sharply, some light may escape the core at the bend, causing signal loss.</li>
+            <li><strong>Connection Losses:</strong> Signal loss occurs at joints, connectors, and splices where fibers meet.</li>
+        </ul>
+        
+        <h3>Attenuation Spectrum</h3>
+        <p>Signal loss in optical fibers varies with wavelength. Modern telecommunications typically use light in three wavelength bands where attenuation is lowest:</p>
+        <ul>
+            <li>850 nm (first window)</li>
+            <li>1310 nm (second window)</li>
+            <li>1550 nm (third window) - This offers the lowest attenuation and is widely used for long-distance transmission</li>
+        </ul>
+        
+        <div class="info-card">
+            <h4>Technical Note</h4>
+            <p>Modern silica fibers can achieve attenuation as low as 0.2 dB/km at 1550 nm wavelength. This means that after traveling 100 km, approximately 37% of the original signal power remains—still enough for detection with modern equipment.</p>
+        </div>
+        
+        <h3>Dispersion</h3>
+        <p>Dispersion refers to the spreading of light pulses as they travel through a fiber. This spreading can cause signals to overlap, resulting in data errors. There are several types of dispersion:</p>
+        <ul>
+            <li><strong>Modal Dispersion:</strong> Occurs in multimode fibers when different light paths (modes) take different times to travel the fiber length.</li>
+            <li><strong>Chromatic Dispersion:</strong> Different wavelengths of light travel at slightly different speeds in the fiber material.</li>
+            <li><strong>Polarization Mode Dispersion:</strong> The two polarization components of light travel at slightly different speeds due to asymmetries in the fiber.</li>
+        </ul>
+    </section>
+
+    <section id="manufacturing">
+        <h2>Manufacturing Process</h2>
+        <p>The creation of optical fibers involves sophisticated processes to ensure extreme purity and precise dimensions:</p>
+        
+        <h3>Preform Creation</h3>
+        <p>The process begins with the creation of a glass preform—a large-diameter rod of ultra-pure glass that contains the core and cladding structure of the final fiber. Several methods are used:</p>
+        <ul>
+            <li><strong>Modified Chemical Vapor Deposition (MCVD):</strong> Chemical vapors are deposited inside a rotating silica tube and sintered into a solid glass layer.</li>
+            <li><strong>Outside Vapor Deposition (OVD):</strong> Glass particles are deposited on the outside of a rotating mandrel.</li>
+            <li><strong>Vapor Axial Deposition (VAD):</strong> Glass soot is deposited on the end of a rotating seed rod.</li>
+        </ul>
+        
+        <div class="img-container">
+            <img src="kl.jpg" alt="Optical fiber drawing process">
+            <div class="caption">The fiber drawing process: A preform is heated and pulled to create a thin optical fiber.</div>
+        </div>
+        
+        <h3>Drawing</h3>
+        <p>The preform is mounted in a drawing tower and heated to approximately 2000°C. At this temperature, the glass softens, and gravity pulls it downward, forming a thin fiber. Precise control systems monitor and maintain the fiber's diameter, typically 125μm (the width of a human hair).</p>
+        
+        <h3>Coating</h3>
+        <p>Immediately after drawing, the bare fiber passes through applicators that coat it with protective acrylate polymers. These coatings are then cured using ultraviolet light. Additional protective layers may be added depending on the fiber's intended application.</p>
+        
+        <h3>Testing</h3>
+        <p>Each fiber undergoes rigorous testing to ensure it meets stringent quality standards:</p>
+        <ul>
+            <li>Dimensional testing (core/cladding diameter, concentricity)</li>
+            <li>Optical testing (attenuation, bandwidth)</li>
+            <li>Mechanical testing (strength, flexibility)</li>
+            <li>Environmental testing (temperature, humidity resistance)</li>
+        </ul>
+    </section>
+
+  
+    <section>
+        <h2>Looking Forward</h2>
+        <p>The principles discussed on this page form the foundation of optical fiber technology. As you explore other sections of our website, you'll discover how these principles are applied in telecommunications, medicine, sensing, and many other fields.</p>
+        
+        <p>Next, learn about the diverse <a href="applications.html">applications of optical fibers</a> or watch our <a href="videos.html">video demonstrations</a> to see these principles in action.</p>
+    </section>
+</div>
+
+<div class="sidebar">
+    <div class="sidebar-box">
+        <h3>Key Concepts</h3>
+        <ul>
+            <li><a href="#total-internal-reflection">Total Internal Reflection</a></li>
+            <li><a href="#structure-composition">Fiber Structure</a></li>
+            <li><a href="#types-of-fibers">Single-Mode vs Multimode</a></li>
+            <li><a href="#light-transmission">Signal Attenuation</a></li>
+            <li><a href="#manufacturing">Manufacturing Techniques</a></li>
+        </ul>
+    </div>
+    
+    <div class="sidebar-box">
+        <h3>Related Content</h3>
+        <ul>
+            <li><a href="applications.html#telecommunications">Telecommunications</a></li>
+            <li><a href="applications.html#medicine">Medical Applications</a></li>
+            <li><a href="videos.html">Video Demonstrations</a></li>
+            <li><a href="quiz.html">Test Your Knowledge</a></li>
+        </ul>
+    </div>
+    
+    <div class="sidebar-box">
+        <h3>Downloadable Resources</h3>
+        <ul>
+            <li><a href="#">Fiber Optics Cheat Sheet (PDF)</a></li>
+            <li><a href="#">Attenuation Chart (PDF)</a></li>
+            <li><a href="#">Glossary of Terms (PDF)</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>OptiFiber</h3>
+            <p>Exploring the technology that illuminates our connected world.</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="principles.html">Principles</a></li>
+                <li><a href="applications.html">Applications</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="casestudy.html">Case Study's</a></li>
+            </ul>
+        </div>
+      
+            <div class="copyright">
+        <p>&copy; 2025 OptiFiber. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Simple script to handle the sticky menu and smooth scrolling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navHeight = document.querySelector('.content-nav').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Demo buttons functionality could be added here
+        const startBtn = document.getElementById('start-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        
+        if (startBtn && pauseBtn && resetBtn) {
+            startBtn.addEventListener('click', function() {
+                console.log('Animation started');
+                // Animation code would go here
+            });
+            
+            pauseBtn.addEventListener('click', function() {
+                console.log('Animation paused');
+                // Animation code would go here
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                console.log('Animation reset');
+                // Animation code would go here
+            });
+        }
+    });
+</script>
+</body>
+</html>
