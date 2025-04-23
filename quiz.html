@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Form</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 0;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            margin-left: 0.5rem;
+        }
+        
+        .menu-items {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu-items li {
+            margin-left: 1.5rem;
+        }
+        
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu-items a:hover {
+            color: var(--accent-color);
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1200x400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .form-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .form-wrapper {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            min-height: 800px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col ul a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #444;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-wrapper {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Knowledge Quiz</span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="principles.html">Principles</a></li>
+                <li><a href="applications.html">Applications</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="casestudy.html">Case Study's</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    
+    <div class="page-header">
+        <h1>Interactive Quiz</h1>
+        <p>Test your knowledge with our comprehensive assessment</p>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-wrapper">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfUwTfgtjcM3rbOtwwJjeEGSsj_La75EUI1fV5dzF8CpC8z1A/viewform?embedded=true" width="640" height="3753" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+        </div>
+    </div>
+    
+   
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OptiFiber</h3>
+                <p>Exploring the technology that illuminates our connected world.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="principles.html">Principles</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                    <li><a href="videos.html">Videos</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="casestudy.html">Case Study's</a></li>
+                </ul>
+            </div>
+                                </div>
+        <div class="copyright">
+            <p>&copy; 2025 OptiFiber. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
